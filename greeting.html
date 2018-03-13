@@ -6,33 +6,66 @@
 
   <body>
     <div id="app"></div>
+    <div id="newComponent"></div>
+    <div id="favoriteFood"</div>
+
      <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.1.0/umd/react.development.js"></script>
      <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.1.0/umd/react-dom.development.js"></script>
      <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
      <script type="text/babel">
 
-
         class Greeting extends React.Component{
-          constructor(props){
-            super(props);
-            this.state = {
-              number: 1
-          }
-        }
-
           render() {
             return (
               <div>
-                <h1>Hello {this.props.name}!</h1>
-                <h2>You are on week {this.state.number} of Module 2</h2>
+                <h1>Hello World!</h1>
+              </div>
+            );
+          }
+        }
+        ReactDOM.render(
+          <Greeting />, document.getElementById('app')
+        );
+
+        class Fancy extends React.Component {
+          render(){
+            return (
+              <div>
+                <h2>This is the new react component that I made. #fancy</h2>
               </div>
             );
           }
         }
 
         ReactDOM.render(
-          <Greeting name="Bloc Student"/>, document.getElementById('app')
+          <Fancy />, document.getElementById('newComponent')
         );
+
+        class Favorites extends React.Component {
+          constructor(props){
+            super(props);
+            this.state = {
+              days: 280
+            }
+          }
+          render(){
+            return (
+              <div>
+                <h3>My favorite food currently is: {this.props.foods}</h3>
+                <h3>My birthday is in: {this.state.days} days.</h3>
+              </div>
+            )
+          }
+        }
+
+        Favorites.defaultProps = {
+          foods: "sushi"
+        }
+
+        ReactDOM.render(
+          <Favorites />, document.getElementById('favoriteFood')
+        );
+
      </script>
   </body>
 
